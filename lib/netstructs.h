@@ -20,36 +20,16 @@
 #ifndef _NETSTRUCTS_H_
 #define _NETSTRUCTS_H_
 
-#include <stdbool.h>
+/* Public functions for data structures */
+/*
+ * Set the version flag
+ */
+void set_v_flag(bool);
 
 /*
- * Structure to hold the flags for the program
+ * Set the CIDR flag
  */
-struct inst_cond_data{
-  bool v6;
-  bool cidr;
-};
-
-
-/*
- * Define a linked list that can hold strings
- */
-struct string_list
-{
-  char *list_item;
-  struct string_list *next;
-};
-
-
-/*
- * Define a linked list that can hold unsigned long integers
- */
-struct ul_list
-{
-  unsigned long list_item;
-  struct ul_list *next;
-};
-
+void set_cidr_flag(bool);
 
 /*
  * Check the stack to see if it's empty. Return 1 if empty

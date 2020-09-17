@@ -21,9 +21,15 @@ netstructs.o : $(libdir)netstructs.h
 strmanip.o : $(libdir)strmanip.h
 
 .PHONY : clean
+.PHONY : tests
 .PHONY : test
+.PHONY : backup
 
 clean :
 	rm $(bindir)subnettr $(libdir)netlib.a $(objects) $(testdir)test
-test :
+tests :
 	gcc -o $(testdir)test $(tests) $(sources) -lcmocka
+test :
+	$(testdir)test
+backup :
+	$(bindir)backup.sh

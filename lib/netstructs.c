@@ -17,17 +17,92 @@
  *
  */
 
+#include <stdbool.h>
 #include <stdio.h>
+
 #include "netstructs.h"
 
-int NSTACK_MAXSIZE = 8;
+#define NSTACK_MAXSIZE 8
+
 int nstack[8];
 int nstack_top = -1;
 int IP_RAW_MAXSIZE = 4;
 
+
+/****************
+ * Private data *
+ ****************/
+
+/* Structure to hold the flags for the program */
+struct inst_cond_data{
+  bool v6;
+  bool cidr;
+};
+struct inst_cond_data inst_cond_data;
+
+/* Linked list that can hold strings */
+struct str_list
+{
+  char *key;
+  char *list_item;
+  struct str_list *next;
+};
+struct str_list *str_head = NULL;
+struct str_list *str_current = NULL;
+
+/* Linked list that can hold unsigned long integers */
+struct ul_list
+{
+  char *key;
+  unsigned long list_item;
+  struct ul_list *next;
+};
+struct ul_list *ul_head = NULL;
+struct uL_list *ul_current = NULL;
+
+/****************************************
+ * Public functions for data structures *
+ ****************************************/
+
+void insert_link()
+{
+  /* TODO: impliment this function */
+}
+
+void str_list_add()
+{
+  /* TODO: impliment this function */
+}
+
+bool get_v_flag(void)
+{
+  /* TODO: impliment this function */
+  return true;
+}
+
+bool get_cidr_flag(void)
+{
+  /* TODO: impliment this function */
+  return true;
+}
+
+void set_v_flag(bool v_flag_value)
+{
+  /* TODO: impliment this function */
+}
+
+void set_cidr_flag(bool cidr_flag)
+{
+  /* TODO: impliment this function */
+}
+
+
+/******************************
+ * Public functions for stack *
+ ******************************/
 int nstack_isempty() {
 
-   if(nstack_top == -1)
+  if(nstack_top == -1)
       return 1;
    else
       return 0;

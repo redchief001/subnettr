@@ -21,21 +21,35 @@
 
 #define MAX_OUTPUT_SIZE 100
 
-const char *strip_delims(char *input_string)
+
+char **strip_delims(char *input_string)
 {
-  // TODO: Impliment this.
-  const char *stripped_string;
-  stripped_string = "2552552550";
+  /* TODO: Impliment this.
+   * The input string has a dot decimal notation (e.g. 192.168.10.101)
+   * where the period characters need to be stripped out.
+   */
+
+
   return stripped_string;
 }
 
-const char *add_delims(char *input_string)
+
+char * add_delims(char *input_string)
 {
   // TODO: Impliment this.
-  const char *delimited_string;
-  delimited_string = "255.255.255.0";
-  return delimited_string;
+  const char *delimited_string[16];
+  /* int i = 0; */
+  /* int j = 0 */
+  /*   while(input_string[i] != '\0'){ */
+  /*     if(input_string[i] == '.'){ */
+  /*	i++; */
+  /*     } else if (){ */
+  /*	delimited_string[i] = input_string[i]; */
+  /*     } */
+  /*   } */
+  return *delimited_string;
 }
+
 
 const char *compile_netstat_output()
 {

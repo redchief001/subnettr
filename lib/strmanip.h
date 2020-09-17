@@ -33,19 +33,19 @@
 /*
  * Strip the delimiters from the input and return the string without them
  */
-const char *strip_delims(char*);
+char **strip_delims(char*);
 
 
 /*
  * Add the delimiters to the output and return the resulting string
  */
-const char *add_delims(char*);
+char *add_delims(char*);
 
 
 /*
  * Compile string output for STDOUT
  */
-const char *compile_netstat_output();
+char *compile_netstat_output();
 
 
 #endif
