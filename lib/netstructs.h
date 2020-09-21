@@ -20,45 +20,72 @@
 #ifndef _NETSTRUCTS_H_
 #define _NETSTRUCTS_H_
 
-/* Public functions for data structures */
-/*
- * Set the version flag
+#include <stdbool.h>
+#include <stdlib.h>
+
+/***************************
+ * Functions for flag data *
+ ***************************/
+
+/* Return the version flag
+ */
+bool get_v_flag();
+
+/* Return the CIDR flag
+ */
+bool get_cidr_flag();
+
+/* Set the version flag
  */
 void set_v_flag(bool);
 
-/*
- * Set the CIDR flag
+/* Set the CIDR flag
  */
 void set_cidr_flag(bool);
 
-/*
- * Check the stack to see if it's empty. Return 1 if empty
+/*************************************
+ * Functions for struct manipulation *
+ *************************************/
+
+/* Insert an entry into the string struct
+ */
+void str_insert_octet(int, char *);
+
+/* Return one of the stored string values
+ */
+char *str_get_octet(int);
+
+/* Insert an entry into the ul struct
+ */
+void int_insert_octet(int, int);
+
+/* Return one of the stored ul values
+ */
+int int_get_octet(int);
+
+
+/************************************
+ * Functions for stack manipulation *
+ ************************************/
+
+/* Check the stack to see if it's empty. Return 1 if empty
  */
 int nstack_isempty();
 
-
-/*
- * Check the stack to see if it it's full. Return 1 if full
+/* Check the stack to see if it it's full. Return 1 if full
  */
 int nstack_isfull();
 
-
-/*
- * Check the value of the top element in the stack
+/* Check the value of the top element in the stack
  */
 int nstack_peek();
 
-
-/*
- * Return the element at the top of the stack or -1 if empty
+/* Return the element at the top of the stack or -1 if empty
  */
 int nstack_pop();
 
-
-/*
- * Push an element on to the top of the stack or return -1 on error
+/* Push an element on to the top of the stack or return -1 on error
  */
 int nstack_push(int);
-
 
 #endif

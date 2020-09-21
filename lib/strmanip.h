@@ -22,18 +22,15 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-/*
- * Define a constant that will hold the delimitors
- */
-#define IPV6_DELIM ":"
-#define IPV$_DELIM "."
+#include "netstructs.h"
 
 
 /*
  * Strip the delimiters from the input and return the string without them
  */
-char **strip_delims(char*);
+char *strip_delims(char*);
 
 
 /*

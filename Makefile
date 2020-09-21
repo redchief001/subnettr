@@ -5,30 +5,28 @@ srcdir = ./src/
 bindir = ./bin/
 testdir = ./test/
 
-objects = $(libdir)condtest.o $(libdir)convlib.o\
-	$(libdir)netstructs.o $(libdir)strmanip.o
-sources = $(libdir)condtest.c $(libdir)convlib.c\
-	$(libdir)netstructs.c $(libdir)strmanip.c
+objects = $(libdir)convlib.o $(libdir)netstructs.o $(libdir)strmanip.o
+sources = $(libdir)convlib.c $(libdir)netstructs.c $(libdir)strmanip.c
 tests = $(testdir)test_subnettr.c
+debug = -g
 
 subnettr : $(srcdir)subnettr.c netlib.a
-	gcc -o $(bindir)subnettr $(srcdir)subnettr.c $(libdir)netlib.a
+	gcc -o $(bindir)subnettr $(debug) $(srcdir)subnettr.c $(libdir)netlib.a
 netlib.a : $(objects)
 	ar rs $(libdir)netlib.a $(objects)
-condtest.o : $(libdir)condtest.h
 convlib.o : $(libdir)convlib.h
 netstructs.o : $(libdir)netstructs.h
 strmanip.o : $(libdir)strmanip.h
 
 .PHONY : clean
-.PHONY : tests
 .PHONY : test
+.PHONY : tests
 .PHONY : backup
 
 clean :
 	rm $(bindir)subnettr $(libdir)netlib.a $(objects) $(testdir)test
 tests :
-	gcc -o $(testdir)test $(tests) $(sources) -lcmocka
+	gcc $(debug) -o $(testdir)test $(debug) $(tests) $(sources) -lcmocka
 test :
 	$(testdir)test
 backup :

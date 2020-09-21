@@ -45,19 +45,16 @@ int main(int argc, char *argv[])
     }
   }
 
-  // Set the ip version flag based on user input
-  set_v_flag(vflag);
-
   // For each of the args, call strip_delims()
-  int i = 0;
-  while(optind < argc){
-    if(i > 0){
-      nmask = true;
-    }
-    strip_delims(argv[optind]);
-    optind++;
-    i++;
-  }
+  /* int i = 0; */
+  /* while(optind < argc){ */
+  /*   if(i > 0){ */
+  /*     nmask = true; */
+  /*   } */
+  /*   strip_delims(argv[optind]); */
+  /*   optind++; */
+  /*   i++; */
+  /* } */
 
   return 0;
 }

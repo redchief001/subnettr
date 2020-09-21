@@ -17,9 +17,6 @@
  *
  */
 
-#include <stdbool.h>
-#include <stdio.h>
-
 #include "netstructs.h"
 
 #define NSTACK_MAXSIZE 8
@@ -29,9 +26,9 @@ int nstack_top = -1;
 int IP_RAW_MAXSIZE = 4;
 
 
-/****************
- * Private data *
- ****************/
+/******************************
+ * Public functions for flags *
+ ******************************/
 
 /* Structure to hold the flags for the program */
 struct inst_cond_data{
@@ -40,66 +37,116 @@ struct inst_cond_data{
 };
 struct inst_cond_data inst_cond_data;
 
-/* Linked list that can hold strings */
-struct str_list
+bool get_v_flag()
 {
-  char *key;
-  char *list_item;
-  struct str_list *next;
-};
-struct str_list *str_head = NULL;
-struct str_list *str_current = NULL;
-
-/* Linked list that can hold unsigned long integers */
-struct ul_list
-{
-  char *key;
-  unsigned long list_item;
-  struct ul_list *next;
-};
-struct ul_list *ul_head = NULL;
-struct uL_list *ul_current = NULL;
-
-/****************************************
- * Public functions for data structures *
- ****************************************/
-
-void insert_link()
-{
-  /* TODO: impliment this function */
+  bool v_flag = inst_cond_data.v6;
+  return v_flag;
 }
 
-void str_list_add()
+bool get_cidr_flag()
 {
-  /* TODO: impliment this function */
-}
-
-bool get_v_flag(void)
-{
-  /* TODO: impliment this function */
-  return true;
-}
-
-bool get_cidr_flag(void)
-{
-  /* TODO: impliment this function */
-  return true;
+  bool cidr_flag = inst_cond_data.cidr;
+  return cidr_flag;
 }
 
 void set_v_flag(bool v_flag_value)
 {
-  /* TODO: impliment this function */
+  inst_cond_data.v6 = v_flag_value;
 }
 
-void set_cidr_flag(bool cidr_flag)
+void set_cidr_flag(bool cidr_flag_value)
 {
-  /* TODO: impliment this function */
+  inst_cond_data.cidr = cidr_flag_value;
 }
+
+
+/**************************************
+ * Public functions for other structs *
+ **************************************/
+
+/* Strings to store */
+struct str_octets
+{
+  char *first_octet;
+  char *second_octet;
+  char *third_octet;
+  char *fourth_octet;
+};
+struct str_octets str_octets;
+
+/* Linked list that can hold unsigned long integers */
+struct int_octets
+{
+  int first_octet;
+  int second_octet;
+  int third_octet;
+  int fourth_octet;
+};
+struct int_octets int_octets;
+
+void str_insert_octet(int order, char *octet)
+{
+  if(order == 1){
+    str_octets.first_octet = octet;
+  } else if(order == 2){
+    str_octets.second_octet = octet;
+  } else if(order == 3){
+    str_octets.third_octet = octet;
+  } else{
+    str_octets.fourth_octet = octet;
+  }
+}
+
+char *str_get_octet(int order)
+{
+  char *ret_val;
+  if(order == 1){
+    ret_val = str_octets.first_octet;
+  } else if(order == 2){
+    ret_val = str_octets.second_octet;
+  } else if(order == 3){
+    ret_val = str_octets.third_octet;
+  } else {
+    ret_val = str_octets.fourth_octet;
+  }
+
+  return ret_val;
+}
+
+void int_insert_octet(int order, int octet)
+{
+  if(order == 1){
+    int_octets.first_octet = octet;
+  } else if(order == 2){
+    int_octets.second_octet = octet;
+  } else if(order == 3){
+    int_octets.third_octet = octet;
+  } else{
+    int_octets.fourth_octet = octet;
+  }
+}
+
+int int_get_octet(int order)
+{
+  long ret_val;
+  if(order == 1){
+    ret_val = int_octets.first_octet;
+  } else if(order == 2){
+    ret_val = int_octets.second_octet;
+  } else if(order == 3){
+    ret_val = int_octets.third_octet;
+  } else {
+    ret_val = int_octets.fourth_octet;
+  }
+
+  return ret_val;
+ }
 
 
 /******************************
  * Public functions for stack *
  ******************************/
+
 int nstack_isempty() {
 
   if(nstack_top == -1)
