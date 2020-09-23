@@ -23,12 +23,12 @@
 
 /* Convert the passed in string array to an unsigned long integer.
  */
-unsigned long conv_str_to_ulong(char *);
+void conv_str_to_int(int);
 
 
 /* Convert the integer to its binary format.
  */
-unsigned long conv_dec_to_bin(unsigned long n);
+void conv_int_to_str(int);
 
 
 #endif

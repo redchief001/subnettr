@@ -56,10 +56,17 @@ char *strip_delims(char *input_string)
 
 char * add_delims(char *input_string)
 {
-  // TODO: Impliment this.
-  char *delimited_string = "255.255.255.0";
+  if(! get_v_flag()){
 
-  return delimited_string;
+  } else {
+    char *ret_val;
+    ret_val = "No IPv6 yet!";
+    return ret_val;
+  }
+
+  char *ret_val;
+  ret_val = "255.255.255.0";
+  return ret_val;
 }
 
 

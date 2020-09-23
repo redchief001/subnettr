@@ -17,31 +17,25 @@
  *
  */
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "convlib.h"
+#include <inttypes.h>
+#include <string.h>
 
-unsigned long conv_str_to_ulong(char *char_input)
+#include "convlib.h"
+#include "netstructs.h"
+
+void conv_str_to_int(int order)
 {
-  // TODO: Stub. Impliment this function
-  return 101;
+  int int_output = strtoumax(str_get_octet(order), NULL, 10);
+  int_insert_octet(order, int_output);
 }
 
-unsigned long octets_to_bin(unsigned long n)
-/* This function converts the octet passed in to binary format and
- * returns the result to the caller.
- */
+void conv_int_to_str(int order)
 {
-  int bin_octet[8];
-  int rev_bin_octet[8];
-  int i = 0;
-  int k =0;
-  while(n > 0){
-    bin_octet[i] = n%2;
-    n = n/2;
-    i++;
-  }
-  for(int j = i -1; j >= 0; j--){
-    rev_bin_octet[k] = bin_octet[j];
-  }
-  return *rev_bin_octet;
+  int input_int = int_get_octet(order);
+  size_t str_size = sizeof(char)*4;
+  char output_str[str_size];
+  sprintf(output_str, "%d", input_int);
+  str_insert_octet(order, output_str);
 }
