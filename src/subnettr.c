@@ -35,7 +35,6 @@ int get_slash_position(char *);
 void get_ip_string(char *, char *, int);
 void get_netmask_string(char *, char *, int);
 void print_ip_address(int *);
-void binary_print(unsigned int);
 void handle_input(char *);
 
 unsigned int ip_number = 0;
@@ -114,45 +113,40 @@ int main(int argc, char *argv[])
   /* printing the results */
   printf("Network address: ");
   printf("\t");
-  binary_print(network_address);
-  printf("\t");
   print_ip_address(&network_address);
+  printf("\t");
   printf("\n");
 
   printf("Netmask:          ");
   printf("\t");
-  binary_print(netmask_number);
-  printf("\t");
   print_ip_address(&netmask_number);
+  printf("\t");
+
   printf("(%d bits)", netmask_bits);
   printf("\n");
-
   printf("Broadcast addr:   ");
   printf("\t");
-  binary_print(broadcast);
-  printf("\t");
   print_ip_address(&broadcast);
+  printf("\t");
   printf("\n");
 
   printf("Min Host value:   ");
   printf("\t");
-  binary_print(host_min);
-  printf("\t");
   print_ip_address(&host_min);
+  printf("\t");
   printf("\n");
 
   printf("Max Host value:   ");
   printf("\t");
-  binary_print(host_max);
-  printf("\t");
   print_ip_address(&host_max);
+  printf("\t");
   printf("\n");
   printf("\n");
 
   number_of_hosts_bits = 32 - netmask_bits;
 
   printf
-    ("The possible number of hosts on this network is %d.\n",
+    ("The number of availible hosts on this network is %d.\n",
      (int)pow(2, number_of_hosts_bits) - 2);
   printf("\n");
 
