@@ -250,31 +250,6 @@ void print_ip_address(int * number_addr)
   printf(" ");
 }
 
-void binary_print(unsigned int number)
-{
-  unsigned int mask = 0xff000000; // last byte mask
-  unsigned int shift = 24; // separate bytes
-  unsigned int byte, byte_iterator, bit_iterator; // auxiliary variables
-
-  for(byte_iterator = 0; byte_iterator < 4; byte_iterator++) // byte iterator
-    {
-      byte = (number & mask) >> shift;
-      printf(" ");
-
-      for(bit_iterator = 0; bit_iterator < 8; bit_iterator++) // bit iterator
-	{
-	  if(byte & 128) // print bit values
-	    printf("1");
-	  else
-	    printf("0");
-	  byte <<= 1;
-	}
-      mask >>= 8; // adjust mask for next byte
-      shift -= 8; // adjust shift for next byte
-
-    }
-}
-
 /* Store the results */
 void handle_input(char * string)
 {
